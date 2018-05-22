@@ -1,39 +1,44 @@
-<h1>Eat Da Burger!</h1>
-<br>
-<form class="createBurger">
-    <div class="form-group">
-        <label for="burger">What kind of burger are you craving?</label>
-        <input type="text" name="name" id="burger">
-    </div>
-    <button type="submit" id ="newBurger">Submit</button>
-</form>
-<br>
-<div class="container col-12">
-    {{!-- <div class="row"> --}}
-        <div class="col-6">
-            <h2>Burgers To Eat</h2>
-            <div class="toEat">
-                {{#each burgers}}
-                    <div>
-                        {{#unless devoured}}
-                         <a href=""><img class="devour" src="./assets/img/burger.png" alt="" data-id="{{id}}" data-eaten="{{devoured}}"></a> </span>{{burger_name}}
-                        {{/unless}}
-                    </div>
-                {{/each}}
+<div class="container">
+    <div class="jumbotron bg-light text-white col-8" id="inputBox">
+        <h1 class="headingFont text-center">Eat Da Burger!</h1>
+        <br>
+        <form class="createBurger" id="burgerForm">
+            <div class="form-group text-center">
+                <label for="burger">What kind of burger are you craving?</label>
+                <br>
+                <input type="text" name="burger" id="burger" required>
+                <br><br>
+                <button type="submit" class="btn btn-danger" id ="newBurger">Add Da Burger!</button>
             </div>
-        </div>
+        </form>
+    </div>
+</div>
 
-        <div class="col-6">
-            <h2>Burgers I've Eaten</h2>
+<br>
+
+<div class="container col-10">
+    <div class="col-5">
+        <h2 class="headingFont text-center"> <span class="headingFont align-middle">Burgers To Eat</span></h2>
+        <div class="toEat">
             {{#each burgers}}
-                <div data-id="{{id}}" data-eaten="{{devoured}}">
-                    {{#if devoured}}
-                     {{burger_name}}
-                    {{/if}}
+                <div class="text-center mb-2">
+                    {{#unless devoured}}
+                        <a href=""><img class="devour" src="./assets/img/burger.png" alt="" data-id="{{id}}" data-eaten="{{devoured}}"></a> <span class="align-middle">{{burger_name}}</span>
+                    {{/unless}}
                 </div>
             {{/each}}
         </div>
+    </div>
 
-    {{!-- </div> --}}
+    <div class="col-5">
+        <h2 class="headingFont text-center"> <span class="headingFont align-middle">Burgers I've Eaten</span></h2>
+        {{#each burgers}}
+            <div class="text-center mb-2" data-id="{{id}}" data-eaten="{{devoured}}">
+                {{#if devoured}}
+                    <img src="./assets/img/boy.png" alt=""><span class="align-middle">{{burger_name}}</span>
+                {{/if}}
+            </div>
+        {{/each}}
+    </div>
 </div>
 

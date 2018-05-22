@@ -1,8 +1,8 @@
 $(function () {
+    
     //When the submit button is clicked...
     $("#newBurger").on("click", function() {
         event.preventDefault();
-        console.log("I'm being clicked!");
 
         //Create a new object in the database with the name of the burger entered and set devoured to 0 (false)
         var newBurger = {
@@ -22,6 +22,7 @@ $(function () {
         })
     });
 
+    //Hover animation for the burger/mouth icons in the Burgers To Eat column
     $(function() {
         $(".devour").on({
             mouseenter: function() {
@@ -33,21 +34,23 @@ $(function () {
         });
     });
 
+    //When the burger/mouth icons in the Burgers To Eat column are clicked..
     $(".devour").on("click", function() {
         event.preventDefault();
-        console.log("I'm being clicked!");
 
+        //Grab the contents of the data-id and data-eaten properties
         var id = $(this).data("id");
         var changeEaten = $(this).data("eaten");
 
         console.log("Here's the id: ", id);
         console.log("Here is the eaten state: ", changeEaten);
 
+        //Change devoured from 0 to 1 (false to true)
         var eatenState = {
             devoured: 1
         };
 
-        //Send PUT request to change devoured from 0 to 1 (false to true)
+        //Send PUT request to change devoured from 0 to 1 (false to true) to the database
         $.ajax("/api/burgers/" + id, {
             type: "PUT",
             data: eatenState
