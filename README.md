@@ -1,6 +1,6 @@
 # Eat Da Burger
 
-Available at: (https://lizschuering.github.io/burger/)
+Available at: https://morning-meadow-49988.herokuapp.com/
 
 # What Does the App Do?
 
